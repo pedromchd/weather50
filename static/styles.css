@@ -36,6 +36,7 @@
     padding: .75rem;
 }
 
+.search__input:not(:focus) + .search__results:not(:hover),
 .search__results:empty {
     display: none;
     visibility: hidden;
@@ -47,5 +48,24 @@
     background-color: #3b3b3b;
     border-radius: .5rem;
     margin-top: .5rem;
+    overflow: clip;
+}
+
+.search__item {
+    list-style: none;
+}
+
+.search__item + .search__item {
+    border-top: 1px solid #5b5b5b;
+}
+
+.search__item:hover {
+    background-color: #5b5b5b;
+}
+
+.search__item__link {
+    display: block;
     padding: .75rem;
+    text-decoration: none;
+    color: unset;
 }
