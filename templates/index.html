@@ -30,10 +30,43 @@
 
             <div class="search">
                 <input type="search" class="search__input" placeholder="Enter city name">
-                <div class="search__results"></div>
+                <ul class="search__results"></ul>
             </div>
 
         </header>
+
+        <script>
+            const searchInput = document.querySelector(".search__input");
+            const searchResults = document.querySelector(".search__results");
+
+            searchInput.addEventListener("input", async () => {
+                let cityName = encodeURIComponent(searchInput.value);
+
+                // https://open-meteo.com/en/docs/geocoding-api
+                let url = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en&format=json`;
+
+                let response = await fetch(url);
+                let { results } = await response.json();
+
+                searchResults.innerHTML = "";
+                if (results) {
+                    for (const city of results) {
+                        if (!city.admin1) { continue }
+                        searchResults.innerHTML += createListItem(city);
+                    }
+                }
+            });
+
+            function createListItem(city) {
+                return `
+                    <li class="search__item">
+                        <a href="/forecast?latitude=${city.latitude}&longitude=${city.longitude}" class="search__item__link">
+                            ${city.name}, ${city.admin1}, ${city.country_code}
+                        </a>
+                    </li>
+                `;
+            }
+        </script>
 
     </body>
 
