@@ -1,0 +1,51 @@
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: .75rem;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo__image {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.logo__title {
+    margin: auto .75rem;
+    font-size: 2rem;
+}
+
+.search {
+    width: 100%;
+    margin-block: auto;
+    position: relative;
+}
+
+.search__input {
+    width: 100%;
+    border: none;
+    border-radius: .5rem;
+    padding: .75rem;
+}
+
+.search__results:empty {
+    display: none;
+    visibility: hidden;
+}
+
+.search__results {
+    position: absolute;
+    width: 100%;
+    background-color: #3b3b3b;
+    border-radius: .5rem;
+    margin-top: .5rem;
+    padding: .75rem;
+}
