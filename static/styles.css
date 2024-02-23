@@ -69,3 +69,26 @@
     text-decoration: none;
     color: unset;
 }
+
+.forecast {
+    flex-grow: 1;
+    display: grid;
+    grid-template-areas:
+        "a a c"
+        "a a c"
+        "b b c";
+    gap: .75rem;
+    padding: .75rem;
+}
+
+.forecast__current {
+    grid-area: a;
+}
+
+.forecast__hourly {
+    grid-area: b;
+}
+
+.forecast__daily {
+    grid-area: c;
+}
